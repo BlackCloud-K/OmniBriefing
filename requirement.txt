@@ -1,0 +1,7 @@
+mcp>=0.1.0
+google-generativeai
+python-dotenv
+yfinance
+requests
+beautifulsoup4
+httpx
