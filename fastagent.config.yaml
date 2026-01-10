@@ -5,4 +5,4 @@ mcp:
   servers:
     weather:
       command: "python"
-      args: ["server/weather_server.py"]
+      args: ["-u", "server/weather_server.py"]
