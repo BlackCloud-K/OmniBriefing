@@ -62,7 +62,7 @@ client = FastAgent("OmniBriefing Client")
 )
 
 
-async def main():
+async def weather_info():
     async with client.run() as agent:
 #         print("\nOmniBriefing Agent 已就绪")
 #         await agent.interactive()
@@ -93,4 +93,4 @@ async def main():
             print(f"运行出错: {e}")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(weather_info())

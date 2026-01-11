@@ -1,8 +1,8 @@
-# google:
-#     api_key: AIzaSyC41U68o4UelzdaYaHRveqK90j8ih4WPcQ
-
 mcp:
   servers:
     weather:
       command: "python"
-      args: ["-u", "server/weather_server.py"]
+      args: ["server/weather_server.py"]
+    finance:
+      command: "python"
+      args: ["server/finance_server.py"]
