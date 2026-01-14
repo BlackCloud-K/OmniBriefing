@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 import trafilatura
+from time import sleep
 
 # 1. 初始化环境
 load_dotenv()
@@ -168,6 +169,10 @@ def search_news_options(tickers: list[str], limit: int = 3) -> str:
     global_index = 0
     menu_output = []
     
+    # 用于去重的集合：跟踪已见过的 URL 和标题
+    seen_urls = set()
+    seen_titles = set()
+    
     # 内部函数：获取单只股票新闻
     def fetch_single_news(ticker):
         try:
@@ -205,6 +210,24 @@ def search_news_options(tickers: list[str], limit: int = 3) -> str:
         for future in concurrent.futures.as_completed(future_to_ticker):
             items = future.result()
             for item in items:
+                # 去重检查：如果 URL 或标题已存在，则跳过
+                url = item["url"]
+                title = item["title"]
+                
+                # 标准化 URL 和标题用于比较（去除首尾空格，转为小写）
+                url_normalized = url.strip().lower() if url else ""
+                title_normalized = title.strip().lower() if title else ""
+                
+                # 如果 URL 或标题已存在，跳过这条新闻
+                if url_normalized in seen_urls or title_normalized in seen_titles:
+                    continue
+                
+                # 添加到已见集合
+                if url_normalized:
+                    seen_urls.add(url_normalized)
+                if title_normalized:
+                    seen_titles.add(title_normalized)
+                
                 # 存入全局列表，分配 ID
                 entry = {
                     "id": global_index,
@@ -346,6 +369,7 @@ def export_final_report() -> str:
     Args:
         (No parameters)
     """
+    sleep(50)
     md = "# Daily Market Pulse\n\n"
     
     # 1. 股价部分
@@ -353,7 +377,7 @@ def export_final_report() -> str:
     for ticker, data in SESSION_STATE["prices"].items():
         if data.get("status") == "Active":
             # 1. 基础信息
-            md += f"- **{ticker}**: ${data['price']} ({data['change']}%)\n"
+            md += f"- **{ticker}**: {data['name']} ${data['price']} ({data['change']}%)\n"
             
             # 2. 清洗并格式化分时数据 (Intraday Trend)
             history = data.get("price_history")
@@ -367,7 +391,7 @@ def export_final_report() -> str:
                 ]
                 # 用箭头连接，既紧凑又直观
                 trend_line = " → ".join(trend_points)
-                md += f"  - *Intraday*: {trend_line}\n"
+                md += f"  - *Price Trend*: {trend_line}\n"
         else:
             md += f"- **{ticker}**: {data.get('status')}\n"
             

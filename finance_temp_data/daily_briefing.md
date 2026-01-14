@@ -1,167 +1,167 @@
+Generated on: 2026-01-14
+
 # Daily Market Pulse
 
 ## Market Data
-- **AMD**: $221.36 (6.58%)
-  - *Intraday*: 04:00:$211.10 → 04:30:$210.90 → 05:00:$210.78 → 05:30:$210.70 → 06:00:$211.24 → 06:30:$211.59 → 07:00:$213.13 → 07:30:$212.64 → 08:00:$212.96 → 08:30:$215.36 → 09:00:$214.95 → 09:30:$221.38 → 10:00:$218.21 → 10:30:$219.21 → 11:00:$218.36 → 11:30:$222.24 → 12:00:$221.40 → 12:30:$220.10 → 13:00:$220.93 → 13:30:$220.63 → 14:00:$221.87 → 14:30:$222.17 → 15:00:$221.73 → 15:30:$221.02 → 16:00:$221.18 → 16:30:$221.17 → 17:00:$221.16 → 17:30:$221.20 → 18:00:$220.90 → 18:30:$221.13 → 19:00:$221.27 → 19:30:$221.36
-- **MSFT**: $469.96 (-1.51%)
-  - *Intraday*: 04:00:$475.96 → 04:30:$475.26 → 05:00:$474.86 → 05:30:$475.05 → 06:00:$475.06 → 06:30:$475.23 → 07:00:$475.59 → 07:30:$475.11 → 08:00:$475.22 → 08:30:$476.38 → 09:00:$474.70 → 09:30:$472.96 → 10:00:$468.24 → 10:30:$468.37 → 11:00:$468.74 → 11:30:$470.55 → 12:00:$469.71 → 12:30:$467.69 → 13:00:$468.71 → 13:30:$467.35 → 14:00:$466.84 → 14:30:$467.18 → 15:00:$468.24 → 15:30:$470.72 → 16:00:$469.89 → 16:30:$469.90 → 17:00:$469.85 → 17:30:$469.71 → 18:00:$469.82 → 18:30:$469.80 → 19:00:$469.73 → 19:30:$469.96
-- **AAPL**: $260.88 (0.24%)
-  - *Intraday*: 04:00:$259.25 → 04:30:$259.29 → 05:00:$258.96 → 05:30:$259.05 → 06:00:$258.88 → 06:30:$259.29 → 07:00:$259.20 → 07:30:$259.17 → 08:00:$259.02 → 08:30:$259.30 → 09:00:$258.69 → 09:30:$259.91 → 10:00:$260.09 → 10:30:$259.93 → 11:00:$259.91 → 11:30:$260.90 → 12:00:$260.84 → 12:30:$260.52 → 13:00:$259.99 → 13:30:$259.96 → 14:00:$259.74 → 14:30:$259.46 → 15:00:$259.02 → 15:30:$261.05 → 16:00:$261.02 → 16:30:$260.92 → 17:00:$260.98 → 17:30:$261.00 → 18:00:$260.75 → 18:30:$260.80 → 19:00:$260.89 → 19:30:$260.88
-- **NVDA**: $185.79 (0.46%)
-  - *Intraday*: 04:00:$185.60 → 04:30:$185.51 → 05:00:$185.21 → 05:30:$185.36 → 06:00:$185.45 → 06:30:$185.24 → 07:00:$184.94 → 07:30:$184.84 → 08:00:$185.19 → 08:30:$185.75 → 09:00:$184.97 → 09:30:$184.10 → 10:00:$183.92 → 10:30:$184.80 → 11:00:$185.23 → 11:30:$187.68 → 12:00:$186.40 → 12:30:$184.92 → 13:00:$185.07 → 13:30:$184.62 → 14:00:$184.79 → 14:30:$184.43 → 15:00:$184.72 → 15:30:$185.82 → 16:00:$185.57 → 16:30:$185.50 → 17:00:$185.77 → 17:30:$185.85 → 18:00:$185.66 → 18:30:$185.77 → 19:00:$185.94 → 19:30:$185.79
-- **GOOGL**: $337.25 (1.62%)
-  - *Intraday*: 04:00:$334.23 → 04:30:$334.33 → 05:00:$334.28 → 05:30:$334.00 → 06:00:$334.36 → 06:30:$334.24 → 07:00:$334.43 → 07:30:$334.38 → 08:00:$334.35 → 08:30:$334.61 → 09:00:$334.64 → 09:30:$339.10 → 10:00:$335.61 → 10:30:$336.78 → 11:00:$337.14 → 11:30:$339.36 → 12:00:$339.90 → 12:30:$337.92 → 13:00:$337.98 → 13:30:$336.54 → 14:00:$336.88 → 14:30:$336.27 → 15:00:$335.69 → 15:30:$336.00 → 16:00:$336.37 → 16:30:$336.55 → 17:00:$336.82 → 17:30:$336.99 → 18:00:$336.96 → 18:30:$337.00 → 19:00:$337.45 → 19:30:$337.25
-- **^DJI**: $49191.99 (-0.8%)
-  - *Intraday*: 09:30:$49310.43 → 10:00:$49248.93 → 10:30:$49296.45 → 11:00:$49284.96 → 11:30:$49291.33 → 12:00:$49299.15 → 12:30:$49245.34 → 13:00:$49236.14 → 13:30:$49247.34 → 14:00:$49233.08 → 14:30:$49196.78 → 15:00:$49115.13 → 15:30:$49187.65 → 16:00:$49191.99 → 16:30:$49191.99
-- **^GSPC**: $6963.74 (-0.19%)
-  - *Intraday*: 09:30:$6967.85 → 10:00:$6951.60 → 10:30:$6962.83 → 11:00:$6960.20 → 11:30:$6973.94 → 12:00:$6970.91 → 12:30:$6954.31 → 13:00:$6954.60 → 13:30:$6952.54 → 14:00:$6954.90 → 14:30:$6953.37 → 15:00:$6944.77 → 15:30:$6962.98 → 16:00:$6963.74 → 16:30:$6963.74
-- **^IXIC**: $23709.87 (-0.1%)
-  - *Intraday*: 09:30:$23732.15 → 10:00:$23633.83 → 10:30:$23693.20 → 11:00:$23695.52 → 11:30:$23797.24 → 12:00:$23766.12 → 12:30:$23684.43 → 13:00:$23687.96 → 13:30:$23650.54 → 14:00:$23662.12 → 14:30:$23666.12 → 15:00:$23638.04 → 15:30:$23711.20 → 16:00:$23709.87 → 16:30:$23709.87 → 17:00:$23709.87
-- **BA**: $244.64 (2.01%)
-  - *Intraday*: 04:00:$239.29 → 04:30:$239.12 → 05:00:$239.05 → 05:30:$238.85 → 06:00:$238.99 → 06:30:$240.60 → 07:00:$240.70 → 07:30:$240.39 → 08:00:$240.59 → 08:30:$240.65 → 09:00:$240.73 → 09:30:$243.26 → 10:00:$243.33 → 10:30:$245.66 → 11:00:$245.40 → 11:30:$246.40 → 12:00:$247.28 → 12:30:$245.59 → 13:00:$245.74 → 13:30:$246.05 → 14:00:$245.94 → 14:30:$245.90 → 15:00:$244.72 → 15:30:$244.50 → 16:00:$244.39 → 16:30:$244.40 → 17:00:$244.38 → 17:30:$244.52 → 18:00:$244.56 → 18:30:$244.60 → 19:00:$244.60 → 19:30:$244.64
-- **TSLA**: $446.82 (-0.48%)
-  - *Intraday*: 04:00:$449.17 → 04:30:$449.34 → 05:00:$448.50 → 05:30:$448.45 → 06:00:$448.89 → 06:30:$449.25 → 07:00:$449.79 → 07:30:$449.23 → 08:00:$448.75 → 08:30:$450.97 → 09:00:$450.16 → 09:30:$448.20 → 10:00:$447.06 → 10:30:$451.11 → 11:00:$450.32 → 11:30:$450.67 → 12:00:$449.37 → 12:30:$446.99 → 13:00:$447.43 → 13:30:$444.90 → 14:00:$445.07 → 14:30:$446.83 → 15:00:$446.23 → 15:30:$447.13 → 16:00:$447.25 → 16:30:$446.82 → 17:00:$447.27 → 17:30:$447.14 → 18:00:$446.90 → 18:30:$446.87 → 19:00:$447.04 → 19:30:$446.82
-- **F**: $13.98 (-0.36%)
-  - *Intraday*: 04:00:$14.04 → 04:30:$14.03 → 05:00:$14.03 → 05:30:$14.03 → 06:00:$14.02 → 06:30:$14.02 → 07:00:$14.01 → 07:30:$14.02 → 08:00:$14.02 → 08:30:$14.05 → 09:00:$14.07 → 09:30:$14.03 → 10:00:$13.99 → 10:30:$14.03 → 11:00:$13.99 → 11:30:$14.05 → 12:00:$14.06 → 12:30:$14.00 → 13:00:$13.99 → 13:30:$14.05 → 14:00:$14.02 → 14:30:$13.99 → 15:00:$13.96 → 15:30:$13.98 → 16:00:$13.99 → 16:30:$13.98 → 17:00:$13.97 → 17:30:$13.97 → 18:00:$13.96 → 18:30:$13.97 → 19:00:$13.98 → 19:30:$13.98
-- **XOM**: $126.86 (2.28%)
-  - *Intraday*: 04:00:$124.55 → 04:30:$124.69 → 05:00:$124.56 → 05:30:$124.40 → 06:00:$124.49 → 06:30:$124.70 → 07:00:$124.76 → 07:30:$124.83 → 08:00:$124.75 → 08:30:$124.55 → 09:00:$124.77 → 09:30:$125.94 → 10:00:$125.98 → 10:30:$126.57 → 11:00:$126.31 → 11:30:$125.56 → 12:00:$126.14 → 12:30:$126.39 → 13:00:$126.50 → 13:30:$126.98 → 14:00:$126.19 → 14:30:$126.40 → 15:00:$126.16 → 15:30:$126.49 → 16:00:$126.54 → 16:30:$126.50 → 17:00:$126.38 → 17:30:$126.50 → 18:00:$126.75 → 18:30:$126.70 → 19:00:$126.72 → 19:30:$126.86
+- **AMD**: $223.17 (1.0%)
+  - *Price Trend*: 04:00:$219.72 → 05:00:$218.22 → 09:30:$222.23 → 10:30:$223.15 → 11:30:$221.31 → 12:30:$222.63 → 13:30:$221.78 → 14:30:$221.38 → 15:30:$223.53 → 16:00:$223.17 → 17:00:$223.17
+- **^IXIC**: $23471.75 (-1.0%)
+  - *Price Trend*: 09:30:$23445.45 → 10:30:$23430.96 → 11:30:$23361.62 → 12:30:$23370.51 → 13:30:$23377.00 → 14:30:$23422.31 → 15:30:$23476.26 → 16:00:$23471.75 → 17:00:$23471.75
+- **^DJI**: $49149.63 (-0.09%)
+  - *Price Trend*: 09:30:$48998.75 → 10:30:$49103.89 → 11:30:$48934.77 → 12:30:$48993.78 → 13:30:$49026.70 → 14:30:$49109.40 → 15:30:$49158.62 → 16:00:$49149.63
+- **MSFT**: $459.72 (-2.33%)
+  - *Price Trend*: 04:00:$468.30 → 05:00:$467.05 → 09:30:$464.69 → 10:30:$463.90 → 11:30:$461.62 → 12:30:$460.58 → 13:30:$458.83 → 14:30:$458.30 → 15:30:$459.38 → 16:00:$459.66 → 17:00:$459.72
+- **NVDA**: $182.77 (-1.64%)
+  - *Price Trend*: 04:00:$185.00 → 05:00:$184.25 → 09:30:$181.68 → 10:30:$181.99 → 11:30:$182.10 → 12:30:$182.22 → 13:30:$181.82 → 14:30:$182.15 → 15:30:$183.17 → 16:00:$183.00 → 17:00:$182.77
+- **^GSPC**: $6926.6 (-0.53%)
+  - *Price Trend*: 09:30:$6912.24 → 10:30:$6916.15 → 11:30:$6895.23 → 12:30:$6900.49 → 13:30:$6905.27 → 14:30:$6915.46 → 15:30:$6928.41 → 16:00:$6926.60
+- **GOOGL**: $335.45 (-0.15%)
+  - *Price Trend*: 04:00:$337.50 → 05:00:$335.79 → 09:30:$333.05 → 10:30:$333.63 → 11:30:$332.85 → 12:30:$334.10 → 13:30:$334.65 → 14:30:$335.15 → 15:30:$335.81 → 16:00:$335.10 → 17:00:$335.45
+- **BA**: $242.49 (-0.84%)
+  - *Price Trend*: 04:00:$244.18 → 05:00:$243.88 → 06:00:$243.70 → 07:00:$244.50 → 08:00:$243.89 → 09:00:$243.86 → 09:30:$240.43 → 10:30:$241.43 → 11:30:$240.99 → 12:30:$241.79 → 13:30:$241.99 → 14:30:$242.16 → 15:30:$242.61 → 16:00:$242.07 → 17:00:$242.49
+- **AAPL**: $259.85 (-0.46%)
+  - *Price Trend*: 04:00:$260.40 → 05:00:$259.82 → 09:30:$259.75 → 10:30:$258.74 → 11:30:$257.38 → 12:30:$257.53 → 13:30:$257.80 → 14:30:$259.97 → 15:30:$259.95 → 16:00:$259.60 → 17:00:$259.70 → 17:31:$259.85
+- **TSLA**: $438.07 (-2.04%)
+  - *Price Trend*: 04:00:$446.17 → 05:00:$444.16 → 09:30:$440.05 → 10:30:$438.42 → 11:30:$436.12 → 12:30:$436.41 → 13:30:$436.88 → 14:30:$435.16 → 15:30:$439.26 → 16:00:$438.14 → 17:00:$438.07
+- **XOM**: $130.4 (3.05%)
+  - *Price Trend*: 04:00:$126.41 → 05:00:$127.54 → 06:00:$127.02 → 07:00:$127.03 → 08:00:$127.03 → 09:00:$127.00 → 09:30:$128.84 → 10:30:$129.76 → 11:30:$129.79 → 12:30:$130.57 → 13:30:$131.43 → 14:30:$130.38 → 15:30:$130.25 → 16:00:$130.79 → 17:00:$130.40
+- **GC=F**: $4633.9 (0.76%)
+  - *Price Trend*: 00:00:$4626.30 → 01:00:$4644.50 → 02:00:$4639.70 → 03:00:$4641.80 → 04:00:$4637.90 → 05:00:$4641.20 → 06:00:$4638.50 → 07:00:$4646.90 → 08:00:$4643.80 → 09:00:$4624.50 → 10:00:$4624.80 → 11:00:$4624.10 → 12:00:$4621.30 → 13:00:$4642.50 → 14:00:$4646.70 → 15:00:$4639.20 → 16:00:$4633.90
+- **F**: $13.84 (-1.04%)
+  - *Price Trend*: 04:00:$13.98 → 05:00:$13.96 → 06:00:$13.98 → 07:00:$13.97 → 08:00:$13.97 → 09:00:$13.96 → 09:30:$13.96 → 10:30:$13.97 → 11:30:$13.89 → 12:30:$13.83 → 13:30:$13.86 → 14:30:$13.85 → 15:30:$13.84 → 16:00:$13.84 → 17:00:$13.84
+- **CL=F**: $61.05 (-0.16%)
+  - *Price Trend*: 00:00:$60.87 → 01:00:$60.68 → 02:00:$60.70 → 03:00:$60.65 → 04:00:$61.00 → 05:00:$62.00 → 06:00:$61.81 → 07:00:$61.88 → 08:00:$61.62 → 09:00:$61.71 → 10:00:$61.67 → 11:00:$61.73 → 12:00:$61.79 → 13:00:$61.83 → 14:00:$62.31 → 15:00:$60.26 → 16:00:$61.05
+- **NG=F**: $3.11 (-8.95%)
+  - *Price Trend*: 00:00:$3.41 → 01:00:$3.38 → 02:00:$3.36 → 03:00:$3.39 → 04:00:$3.41 → 05:00:$3.40 → 06:00:$3.36 → 07:00:$3.28 → 08:00:$3.22 → 09:00:$3.17 → 10:00:$3.15 → 11:00:$3.09 → 12:00:$3.10 → 13:00:$3.10 → 14:00:$3.09 → 15:00:$3.09 → 16:00:$3.11
 
 ## Key Developments
 
-### [AMD] AMD, Intel, Reddit, Planet Labs: Top Analyst Calls
+### [MSFT] Nasdaq Logs Worst Day in 4 Weeks as Big Tech, Major Banks Slide
 ### 1. EXECUTIVE SUMMARY
-- Key Bank upgraded Intel and AMD to overweight from sector weight.
-- Evercore ISI initiated Reddit with an outperform rating, citing growth potential.
-- Wedbush raised Planet Labs' price target to $28, citing demand and AI tailwinds.
+- US equity benchmarks declined on Wednesday.
+- Nasdaq Composite experienced its largest one-day drop in four weeks.
+- Big Tech and major banks saw significant slides.
 
 ### 2. HARD DATA (Numbers/Dates)
-- Intel and AMD upgraded to overweight from sector weight by Key Bank.
-- AMD's server CPU for 2026 is almost completely sold out.
-- Potential 10-15% price increase for AMD in Q1 of this year.
-- Reddit's stock increased by 40% in the last 12 months.
-- 21 buy ratings, 12 holds, and 1 sell rating for Reddit.
-- Wedbush raised Planet Labs' price target to $28 from previous target not specified.
-- Average 12-month price target for Planet Labs is $23.
+- No specific numbers or dates provided in the given content.
 
 ### 3. KEY QUOTES
-- "significant progress" - John Vinh on Intel's manufacturing process.
-- "good enough to ramp up Panther Lake" - John Vinh on Intel's 18A process.
-- Significant opportunity for Reddit to grow its average revenue per user - Evercore ISI analyst.
-- "well positioned at the intersection of space and AI" - Dan Ives on Planet Labs.
-*(Ref ID: 1)*
+- None provided in the given content.
+*(Ref ID: 3)*
 
-### [TSLA] Microsoft to pay more for power, US Bancorp's $1B deal for BTIG
+### [NVDA] Why Google stock is on fire in 2026
 ### 1. EXECUTIVE SUMMARY
-
-* Microsoft (MSFT) aims to offset data center impact on US consumers' electricity bills by covering full electricity and infrastructure costs at its data centers.
-* US Bancorp (USB) reaches a $1 billion deal to acquire BTIG, expanding its capital markets business.
-* Tesla (TSLA) stock searches for direction as analyst Emmanuel Rosner remains "tactically constructive" on the EV maker.
+- Alphabet (GOOG, GOOGL) shares up 7.7% in 2026, market cap over $4 trillion.
+- Alphabet's AI deal with Apple (AAPL) and strong performance of Gemini models boost stock.
+- Analysts predict further growth, with Bank of America’s Justin Post maintaining a Buy rating and $370 price target.
 
 ### 2. HARD DATA (Numbers/Dates)
-
-* $1 billion: US Bancorp's deal to acquire BTIG.
-* 6%: Expected rise in EV sales for Tesla this year, according to Emmanuel Rosner.
-* January 20th: US Bancorp's earnings report date.
-* January 28th: Microsoft's earnings report date.
-* Late January: Tesla's earnings report date.
+- 7.7%: Year-to-date increase in Alphabet’s shares.
+- $4 trillion: Alphabet’s market cap.
+- $4.52 trillion: Nvidia’s market cap.
+- 10%: Potential upside to Bank of America’s $370 price target for Alphabet.
+- 2026: The year in which Alphabet’s performance is being evaluated.
 
 ### 3. KEY QUOTES
+- "I think Google could end the year with the highest market cap [in the market]" - Tom Sosnoff, Thinkorswim founder.
+- "With Google in a strong AI position and several big AI IPOs ahead, we remain constructive on Alphabet given leading AI position in the sector across LLM (Gemini), infrastructure (TPUs), consumer reach (search), and enterprise adoption (Cloud, Workspace)" - Justin Post, Bank of America analyst.
+*(Ref ID: 10)*
 
-* Microsoft President Brad Smith: Promises to replenish water and add to local tax bases where it operates data centers.
-* Emmanuel Rosner: "Tactically constructive" on Tesla, expects EV sales to rise 6% this year, but sees AI costs rising.
-* President Trump: "Big tech should pay their own way so that consumers don't pick up the tab" on electricity costs.
-*(Ref ID: 12)*
-
-### [BA] Boeing annual orders top Airbus for first time since 2018
+### [AAPL] TSMC likely to post fourth-quarter profit leap driven by AI boom
 ### 1. EXECUTIVE SUMMARY
-Boeing secured 1,173 commercial plane orders in 2025, surpassing Airbus's 889 orders. Boeing also received a major order from Delta Air Lines for 30 Boeing 787 Dreamliners.
+- TSMC, the world's largest manufacturer of advanced AI chips, is expected to report a 28% jump in Q4 net profit to a record high.
+- Strong demand for AI infrastructure drives growth.
+- TSMC to provide Q1 and full-year guidance in an upcoming earnings call.
 
 ### 2. HARD DATA (Numbers/Dates)
-- Boeing's 2025 orders: 1,173
-- Airbus's 2025 orders: 889
-- Boeing's December orders: 175
-- Boeing's 2025 deliveries: 600
-- Airbus's 2025 deliveries: 793
-- Delta Air Lines order: 30 Boeing 787 Dreamliners (options for 30 more)
-- Boeing's unfilled orders: 6,720
-- Boeing's backlog: 6,130
-- Airbus's backlog: 8,754
-- FAA approval for 737 MAX production increase: 42 per month (from 38) in October 2025
+- Expected Q4 net profit: T$479.1 billion ($15.15 billion).
+- Market capitalization: around $1.4 trillion.
+- Q4 revenue growth: 20.45%.
+- 2026 revenue growth forecast: 25%-30% (up from 22%-26%).
+- Investment in U.S. chip factories: $165 billion.
+- TSMC's Taipei-listed shares: up 44.2% in 2023, up 10% in 2024.
 
 ### 3. KEY QUOTES
-- "Watching the progress that the team has made, we realize that turnaround is still in midst." - Delta CEO Ed Bastian
-- "Our team did great work throughout 2025 to improve the on-time delivery of safe, quality airplanes to our customers to support their growth and modernization plans." - Boeing commercial plane chief Stephanie Pope
-- "We're focused on getting better every day and building on the momentum in the year ahead." - Stephanie Pope
-*(Ref ID: 9)*
+- "Any figure above T$452.3 billion would mark the company's highest-ever quarterly net income and its eighth consecutive quarter of profit growth."
+- U.S. Secretary of Commerce: TSMC set to invest more in the U.S. beyond the announced $165 billion.
+*(Ref ID: 23)*
 
-### [AMD] Intel stock rises on analyst upgrade citing data center AI demand, 'significant progress' in manufacturing
+### [^IXIC] CrowdStrike CEO says AI agents are unpredictable as company snaps up more cybersecurity startups
 ### 1. EXECUTIVE SUMMARY
-- Intel stock rose over 7% due to an analyst upgrade by KeyBanc, citing strong demand for data center AI chips and significant progress in Intel's manufacturing business.
-- Analyst John Vinh upgraded Intel shares to Overweight from Sector Weight, noting high demand for Intel's CPUs from AI data centers and potential new contracts, including a possible deal with Apple.
+CrowdStrike (CRWD) acquires Seraphic Security for $420 million, following last week's $740 million purchase of SGNL, to enhance its Falcon security platform and prepare for new cybersecurity risks associated with AI agents.
 
 ### 2. HARD DATA (Numbers/Dates)
-- Intel stock climbed more than 7%.
-- Intel's 18A process node represents the latest generation of its chip fabrication technology.
-- 2029: Potential date for Apple to use Intel’s 14A process to make low-end chips for iPhones.
+- $420 million: Cost of acquiring Seraphic Security
+- $740 million: Cost of acquiring SGNL
+- $260 million: Cost of acquiring Pangea (2025)
+- $290 million: Cost of acquiring Onum (2025)
+- 22%: Sales growth in Q3
+- $1.23 billion: Sales in Q3
+- 23%: Annual recurring revenue (ARR) growth in Q3
+- $4.92 billion: ARR in Q3
+- $264.6 million: Non-GAAP operating income in Q3
+- 37%: Stock gain in the past year
+- 23%: Nasdaq Composite (^IXIC) advance in the past year
+- $1.29 billion to $1.3 billion: Sales outlook for current quarter
+- $1.09 to $1.11: Earnings per share outlook for current quarter
+- $600: Price target set by Stifel analyst Adam Borg
 
 ### 3. KEY QUOTES
-- "almost sold out for the year" in data center server CPUs.
-- "significant progress" in Intel's manufacturing business.
-- The improving yield of 18A is “enough to convince us it could credibly be the #2 foundry supplier in the industry ahead of Samsung.”
-*(Ref ID: 0)*
+- "The idea [is] ... combining these assets along with Falcon Shield and some of the other acquisitions that we've done in the past gives us really a next-gen identity platform." - George Kurtz, CrowdStrike founder and CEO
+- "The challenge that you have with some of these AI agents, it's like giving full access to a drunken intern. I mean, who knows what they're going to do?" - George Kurtz, CrowdStrike founder and CEO
+- "CrowdStrike is an important platform vendor with a number of drivers to sustain at least high-teens top-line growth and improving profitability in coming years and remain buyers." - Adam Borg, Stifel analyst
+*(Ref ID: 14)*
 
-### [MSFT] Microsoft says it's taking a 'community-first' approach to AI
+### [GOOGL] Alphabet vs. OpenAI: Which AI Giant Will Drive 100% Gains?
 ### 1. EXECUTIVE SUMMARY
-Microsoft unveils a "community-first" AI infrastructure plan, committing to mitigate the impact of its data centers on local communities, including measures on electricity prices, water usage, taxes, and job creation.
+- OpenAI may go public in 2026, but faces financial struggles and declining market share.
+- Alphabet (Google) excelled in 2025, emerging as a leader in AI software.
+- Alphabet's resources may hinder OpenAI's ability to regain market share.
 
 ### 2. HARD DATA (Numbers/Dates)
-- No specific numbers or dates provided in the article.
+- OpenAI's market share: 50% in 2023, 25% currently.
+- Anthropic's market share: 32% currently.
+- Alphabet's Google Gemini market share: 20% currently.
+- OpenAI's anticipated spending: $22 billion by end of 2025.
+- OpenAI's anticipated sales: $13 billion by end of 2025.
+- OpenAI's net loss: $9 billion.
+- Palantir Technologies' stock surge: 160% over the past year.
+- Nvidia's stock surge: 32% over the past year.
 
 ### 3. KEY QUOTES
-- "This is basically a community-driven effort or a community-focused AI effort...": Dan Howley, Yahoo Finance Tech Editor.
-- Microsoft will bear the burden of potential upgrades to infrastructure companies like electric companies need to make.
-- Microsoft will ensure data centers won't impact electricity prices for local communities.
-- Microsoft will replenish more water than it uses for data center projects.
-- Microsoft won't seek lower tax rates in areas where it builds data centers and will invest in local infrastructure and worker training.
-*(Ref ID: 18)*
+- "It means the company has to spend $1.69 to make $1." (referring to OpenAI's financial situation)
+*(Ref ID: 20)*
 
-### [XOM] Why Exxon is a strong energy sector stock pick
+### [GC=F] Gold, Silver Rally to New Highs as Geopolitical Uncertainty Mounts
 ### 1. EXECUTIVE SUMMARY
-Exxon Mobil (XOM) is an attractive pick in the energy sector due to its integrated business model, strong balance sheet, and shareholder return profile. Despite the company's past experiences in Venezuela, including asset seizures and ongoing disputes, portfolio manager Ben Cook sees Exxon as a quality investment.
+Gold and silver prices surged to fresh all-time highs amid rising geopolitical uncertainty, boosting demand for safe-haven assets.
 
 ### 2. HARD DATA (Numbers/Dates)
-- Venezuela's oil production: 3.5 million barrels/day (pre-Hugo Chavez)
-- Exxon Mobil's buyback plan: $20 billion worth of shares in the coming year
-- Brent crude oil price range for buybacks: $60-$65
+- Gold and silver reached new all-time highs (no specific numbers provided)
+- No specific dates mentioned
 
 ### 3. KEY QUOTES
-- "Venezuela is uninvestable" - Darren Woods, Exxon Mobil CEO
-- "We need safety guarantees, we need to ensure that personnel operating in the region are going to be out of harm's way. We need a legal system that promotes and protects the sanctity of contracts." - Ben Cook
-- "The integrated business model affords flexibility and commodity volatility." - Ben Cook
-- "The company has a very strong balance sheet and obviously a management team that has demonstrated capability in investing through the cycle." - Ben Cook
-- "They pay an outstanding dividend that's been rising over the course of history." - Ben Cook
-*(Ref ID: 30)*
+- None available due to access restrictions on the full article.
+*(Ref ID: 34)*
 
-### [NVDA] From Nvidia to Salesforce: Where money is made in Enterprise AI
+### [CL=F] Oil prices rise as tensions flare in Iran, risking 'the nerve center of the global oil market'
 ### 1. EXECUTIVE SUMMARY
-
-The podcast "Stocks in Translation" discusses the future of AI, specifically Enterprise AI, and its potential impact on various industries. The guest, Daniel Newman, CEO of Futurum Group, highlights top beneficiaries of Enterprise AI, including Nvidia (NVDA), Salesforce (CRM), ServiceNow (NOW), Workday (WDAY), and IBM (IBM). He predicts that 2026 will be the year of monetization of AI, with CEOs and boards under pressure to show AI investments paying off.
+Oil prices surged to a two-month high due to rising tensions in Iran, with Brent crude and West Texas Intermediate gaining over 10% in five trading sessions. Geopolitical risks and potential supply disruptions drove the price increase.
 
 ### 2. HARD DATA (Numbers/Dates)
-
-* 2026: predicted to be the year of monetization of AI
-* $1 trillion: potential IPO valuation for companies like OpenAI or SpaceX
-* 95%: percentage of the world's data that sits behind firewalls
-* 1%: percentage of the world's data that has touched AI
-* 50%: predicted percentage of SaaS companies that will be gone by the end of the decade
+- Brent crude: $66.10 per barrel
+- West Texas Intermediate: $61.80 per barrel
+- Iran's oil production: over 3 million barrels per day
+- Iran's oil exports: around 1.5 million barrels per day
+- Proved oil reserves in Iran: over 200 billion barrels
+- Oil passing through the Strait of Hormuz: 20 million barrels per day (2024 average)
+- Percentage of global seaborne trade of petroleum products through the Strait of Hormuz: around 25%
+- Date of Israeli airstrikes on Iranian military and nuclear infrastructure: June 13, 2025
 
 ### 3. KEY QUOTES
-
-* "2026 is really being set up as the year of monetization of AI."
-* "Enterprise AI is the next wave, and it's about using company data and tools, less chatbot, more automation that saves time and money."
-* "95% of the world's data sits behind the firewall, and only 1% of the world's data has touched AI."
-* "I think companies like Salesforce, ServiceNow, and Workday will end up on top."
-* "The future of AI is going to be token-driven consumption metrics."
-*(Ref ID: 29)*
+- "Iran's at the nerve center of the global oil market." - Ben Cahill, University of Texas Austin
+- "If there's a physical supply disruption, the market will react in a big way." - Ben Cahill, University of Texas Austin
+- "At least limited interruptions in production" - No specific attribution, but implying potential impact on oil supply.
+*(Ref ID: 28)*
 
 -------
