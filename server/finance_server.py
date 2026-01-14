@@ -1,3 +1,4 @@
+import concurrent.futures
 from mcp.server.fastmcp import FastMCP
 import yfinance as yf
 import json
@@ -7,185 +8,380 @@ import requests
 import os
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
+import trafilatura
 
-
+# 1. 初始化环境
 load_dotenv()
-groq_api_key = os.getenv("OPENAI_API_KEY")
+# 注意：保持你原有的设置，使用 OPENAI_API_KEY 变量名读取 Groq Key
+groq_api_key = os.getenv("OPENAI_API_KEY") 
+if not groq_api_key:
+    print("Warning: OPENAI_API_KEY (for Groq) not found.")
+
 groq_client = Groq(api_key=groq_api_key)
 mcp = FastMCP("finance")
 
+# === 🌟 核心升级: 全局会话状态 (The Session State) ===
+# 这就像一个“购物车”，用来暂存 Agent 挑选的数据
+SESSION_STATE = {
+    "prices": {},       # 存股价: {"NVDA": {...}, "AAPL": {...}}
+    "raw_news": [],     # 存原始新闻: [{"id": 0, "title": "...", "url": "...", "ticker": "..."}]
+    "summaries": []     # 存总结好的新闻: [{"id": 0, "summary": "..."}]
+}
 
+def _reset_session():
+    """清空购物车，开始新的一轮分析"""
+    SESSION_STATE["prices"] = {}
+    SESSION_STATE["raw_news"] = []
+    SESSION_STATE["summaries"] = []
+
+# === 2. 爬虫工具 (保留你现有的 Trafilatura 逻辑) ===
 def _fetch_text(url: str) -> str:
-    """内部辅助函数：纯粹的爬虫逻辑"""
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    }
-    
-    try:
-        # 1. 发送请求
-        response = requests.get(url, headers=headers, timeout=10)
-        response.raise_for_status()
-        
-        # 2. 解析 HTML
-        soup = BeautifulSoup(response.text, 'html.parser')
-        
-        # 3. 提取正文 (针对 Yahoo Finance 和一般网站的通用逻辑)
-        for script in soup(["script", "style", "nav", "footer", "header"]):
-            script.decompose()
-            
-        # 获取所有段落文本
-        paragraphs = soup.find_all('p')
-        text_content = [p.get_text().strip() for p in paragraphs if len(p.get_text().strip()) > 10] # 过滤掉太短的行
-        
-        full_text = "\n\n".join(text_content)
-        
-        # 截断过长的文本以节省 Token
-        if len(full_text) > 12000:
-            full_text = full_text[:12000] + "\n...(content truncated)..."
-            
-        if not full_text:
-            return "Error: Unable to extract text content from this URL."
-            
-        return f"Source URL: {url}\n\nContent:\n{full_text}"
-
-    except Exception as e:
-        return f"Error fetching article: {str(e)}"
-
-
-@mcp.tool()
-def get_stock_data(ticker: str, prepost: bool = False) -> str:
     """
-    获取股票或大盘的实时价格和基础信息。
-    Args:
-        ticker: 股票代码 (例如: 'NVDA', 'AAPL') 或 大盘代码 (例如: '^GSPC' 代表标普500, '^IXIC' 代表纳指)
-        prepost: 是否获取盘前价格信息。早报应设为True，晚报时设为False
+    使用 trafilatura 库进行本地智能提取。
     """
     try:
-        stock = yf.Ticker(ticker)
+        # 1. 下载 (它会自动处理 User-Agent 和简单的反爬重试)
+        downloaded = trafilatura.fetch_url(url)
         
-        # 获取最新即时数据 (1天内的历史数据，取最后一行)
-        hist = stock.history(period="1d", interval="30min", prepost=True)
-        
-        if hist.empty:
-            return f"Error: No data found for ticker {ticker}"
-        
-        current_price = hist['Close'].iloc[-1]
-        open_price = hist['Open'].iloc[-1]
-        change_percent = ((current_price - open_price) / open_price) * 100
-        
-        # 尝试获取部分基础信息（如果是大盘，info可能较少）
-        info = stock.info
-        name = info.get('shortName', ticker)
-        market_cap = info.get('marketCap', 'N/A')
-        
-        data = {
-            "symbol": ticker,
-            "name": name,
-            "current_price": round(current_price, 2),
-            "daily_change_percent": round(change_percent, 2),
-            "market_cap": market_cap,
-            "currency": info.get('currency', 'USD'),
-            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        }
-        
-        return json.dumps(data, ensure_ascii=False)
-        
-    except Exception as e:
-        return f"Error fetching stock data for {ticker}: {str(e)}"
-
-
-@mcp.tool()
-def get_market_news(ticker: str, limit: int = 8) -> str:
-    """
-    获取指定股票或大盘的最新相关新闻。
-    Args:
-        ticker: 股票代码 (例如: 'NVDA', 'AAPL') 或 大盘代码 (例如: '^GSPC' 代表标普500, '^IXIC' 代表纳指)
-        limit: 返回的新闻数量，默认8条
-    """
-    try:
-        stock = yf.Ticker(ticker)
-        news_list = stock.news
-        
-        if not news_list:
-            return f"No news found for {ticker}."
+        if not downloaded:
+            return "Error: Failed to download page."
             
-        processed_news = []
-        for item in news_list[:limit]:
-            processed_news.append({
-                "title": item.get('title'),
-                "publisher": item.get('publisher'),
-                "link": item.get('link'),
-                "publish_time": datetime.fromtimestamp(item.get('providerPublishTime', 0)).strftime('%Y-%m-%d %H:%M')
-            })
-            
-        return json.dumps(processed_news, ensure_ascii=False)
-        
-    except Exception as e:
-        return f"Error fetching news for {ticker}: {str(e)}"
-
-
-@mcp.tool()
-def summarize_news(url: str, focus_instruction: str = "General summary") -> str:
-    """
-    阅读指定 URL 的新闻，并使用 17B 模型根据指示进行总结。
-    
-    Args:
-        url: 新闻链接
-        focus_instruction: 给总结模型的具体指令。例如："关注英伟达的GPU销量数据"。如果没有特别要求默认为"General summary"。
-    """
-    # 1. 获取原文
-    raw_text = _fetch_text(url)
-    if not raw_text:
-        return "Error: Failed to fetch content from URL."
-
-    # 2. 构建 Prompt
-    system_prompt = (
-        "You are a high-efficiency financial news extractor. Your output acts as a data feed for a senior analyst with limited bandwidth. "
-        "You must compress the article content based on the user's specific instruction into the following strict format:\n\n"
-        
-        "### 1. EXECUTIVE SUMMARY\n"
-        "- Provide a dense, high-level overview.\n"
-        "- Focus strictly on the user's instruction (e.g., if asked about 'revenue', ignore 'product design').\n\n"
-        
-        "### 2. HARD DATA (Output 'None' if missing)\n"
-        "- List ONLY specific numbers, percentages, currency values, dates, or ticker changes.\n"
-        "- Format: `[Metric]: [Value]` (e.g., 'Revenue increase by: $1.4B', 'EPS: $2.12').\n\n"
-        
-        "### 3. KEY QUOTES (Output 'None' if missing)\n"
-        "- Extract 1-2 most critical direct quotes from decision-makers (CEO, CFO, Analysts).\n\n"
-        
-        "CRITICAL CONSTRAINTS:\n"
-        "- Keep the summary between 350 and 450 words.\n"
-        "- Do not use fluff or filler words. Be telegraphic.\n"
-    )
-    
-    user_prompt = f"""
-    --- ARTICLE CONTENT ---
-    {raw_text}
-    -----------------------
-    
-    User INSTRUCTION: {focus_instruction}
-    
-    Please summarize the article above, strictly following the instruction.
-    """
-
-    try:
-        # 3. 调用 8B 模型进行总结
-        chat_completion = groq_client.chat.completions.create(
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            model="meta-llama/llama-4-scout-17b-16e-instruct",
-            temperature=0.1, # 事实提取需要低温度
+        # 2. 提取 (智能识别正文，忽略侧边栏和广告)
+        text = trafilatura.extract(
+            downloaded, 
+            include_comments=False, 
+            include_tables=True,
+            no_fallback=True
         )
         
-        summary = chat_completion.choices[0].message.content
-        return f"Source: {url}\nFocus: {focus_instruction}\n\nSummary:\n{summary}"
+        if not text or len(text) < 200:
+            return "Error: Extracted content empty or too short."
+            
+        return text
 
     except Exception as e:
-        return f"Error during summarization: {str(e)}"
+        return f"Error: {str(e)}"
 
+# ==========================================
+# 🛒 Tool 1: 存股价 (Add Prices to Cart)
+# ==========================================
+@mcp.tool()
+def fetch_and_store_prices(tickers: list[str], prepost: bool = True) -> str:
+    """
+    Fetch and store stock prices for given ticker symbols.
+    
+    Args:
+        tickers: A list of stock ticker symbols (e.g., ["AAPL", "NVDA", "TSLA"]).
+        prepost: Optional boolean (default: False). If True, includes pre-market and post-market data.
+                Set to True if you need extended hours trading data.
+    """
+    _reset_session() # 视为新会话开始，清空旧数据
+    
+    if not tickers:
+        return "No tickers provided."
+
+    # 定义单个抓取逻辑 (复用你之前的逻辑)
+    def fetch_single_ticker(ticker):
+        try:
+            stock = yf.Ticker(ticker)
+            # 策略: 优先取 1天，如果是周末/休市取不到，则回退取 5天
+            hist = stock.history(period="1d", interval="1h", prepost=prepost)
+            if hist.empty:
+                hist = stock.history(period="5d", interval="1h", prepost=prepost)
+            
+            if hist.empty:
+                return {"symbol": ticker, "status": "No Data", "error": "Market Closed/No Data"}
+            
+            current_price = hist['Close'].iloc[-1]
+            
+            # 计算涨跌幅
+            last_date = hist.index[-1].date()
+            day_data = hist[hist.index.date == last_date]
+            
+            if not day_data.empty:
+                open_price = day_data['Open'].iloc[0]
+            else:
+                open_price = hist['Open'].iloc[-1]
+            
+            info = {}
+            try: info = stock.info
+            except: pass
+
+            prev_close = info.get('previousClose')
+            base_price = prev_close if prev_close else open_price
+            
+            change_percent = ((current_price - base_price) / base_price) * 100
+            name = info.get('shortName', info.get('longName', ticker))
+            
+            return {
+                "symbol": ticker,
+                "name": name,
+                "price": round(current_price, 2),
+                "change": round(change_percent, 2),
+                "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "status": 'Active',
+                "price_history": hist['Close']
+            }
+        except Exception as e:
+            return {"symbol": ticker, "status": "Error", "error": str(e)}
+
+    # 并发执行
+    results_summary = []
+    max_workers = min(len(tickers), 10)
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_ticker = {executor.submit(fetch_single_ticker, t): t for t in tickers}
+        
+        for future in concurrent.futures.as_completed(future_to_ticker):
+            data = future.result()
+            ticker = data["symbol"]
+            
+            # 存入全局 Session
+            SESSION_STATE["prices"][ticker] = data
+            
+            # 生成简报字符串返回给 Client
+            if data["status"] == "Active":
+                results_summary.append(f"{ticker}: {data['change']}%")
+            else:
+                results_summary.append(f"{ticker}: {data['status']}")
+            
+    return f"Prices stored in server. Quick View: {', '.join(results_summary)}"
+
+# ==========================================
+# 🛒 Tool 2: 查新闻菜单 (Search & Menu)
+# ==========================================
+@mcp.tool()
+def search_news_options(tickers: list[str], limit: int = 3) -> str:
+    """
+    Search and retrieve news article options for given stock tickers.
+    
+    Args:
+        tickers: A list of stock ticker symbols (e.g., ["AAPL", "NVDA", "TSLA"]).
+                News will be searched for each ticker symbol provided.
+        limit: Optional integer (No more than 3). Maximum number of news articles to retrieve per ticker.
+               Higher values return more articles but may take longer to process.
+    """
+    if not tickers:
+        return "No tickers provided."
+        
+    SESSION_STATE["raw_news"] = [] # 清空旧新闻列表
+    global_index = 0
+    menu_output = []
+    
+    # 内部函数：获取单只股票新闻
+    def fetch_single_news(ticker):
+        try:
+            stock = yf.Ticker(ticker)
+            news_list = stock.news
+            if not news_list: return []
+            
+            valid_items = []
+            safe_limit = min(limit, len(news_list))
+            
+            for item in news_list[:safe_limit]:
+                # 复用你的解析逻辑
+                data = item.get('content', item)
+                title = data.get('title', 'No Title')
+                
+                # 提取链接
+                link = None
+                if 'clickThroughUrl' in data and data['clickThroughUrl']:
+                    link = data['clickThroughUrl'].get('url')
+                if not link and 'canonicalUrl' in data and data['canonicalUrl']:
+                    link = data['canonicalUrl'].get('url')
+                if not link:
+                    link = data.get('link') or data.get('url')
+                    
+                if link and title != "No Title":
+                    valid_items.append({"ticker": ticker, "title": title, "url": link})
+            return valid_items
+        except:
+            return []
+
+    # 并发抓取新闻元数据
+    with concurrent.futures.ThreadPoolExecutor(max_workers=min(len(tickers), 10)) as executor:
+        future_to_ticker = {executor.submit(fetch_single_news, t): t for t in tickers}
+        
+        for future in concurrent.futures.as_completed(future_to_ticker):
+            items = future.result()
+            for item in items:
+                # 存入全局列表，分配 ID
+                entry = {
+                    "id": global_index,
+                    "ticker": item["ticker"],
+                    "title": item["title"],
+                    "url": item["url"]
+                }
+                SESSION_STATE["raw_news"].append(entry)
+                
+                # 生成菜单项
+                menu_output.append(f"[{global_index}] {item['ticker']} | {item['title']}")
+                global_index += 1
+    
+    if not menu_output:
+        return "No news found."
+        
+    return "Available News Options (Select by ID):\n" + "\n".join(menu_output)
+
+# ==========================================
+# 🛒 Tool 3: 选新闻并总结 (Checkout)
+# ==========================================
+@mcp.tool()
+def summarize_selected_indices(indices: list[int], focus_instruction: str = "General summary") -> str:
+    """
+    Fetch and summarize selected news articles by their indices.
+    
+    Args:
+        indices: A list of integer indices corresponding to news articles from search_news_options.
+                For example, [0, 2, 5] will summarize the articles at positions 0, 2, and 5.
+                Indices must be valid (within the range of available news articles).
+        focus_instruction: Optional string (default: "General summary"). Custom instruction for the AI
+                          summarization process.
+    """
+    selected_items = []
+    # 验证 ID
+    for idx in indices:
+        if 0 <= idx < len(SESSION_STATE["raw_news"]):
+            selected_items.append(SESSION_STATE["raw_news"][idx])
+            
+    if not selected_items:
+        return "Invalid indices provided."
+
+    print(f"Summarizing {len(selected_items)} selected articles...")
+
+    # 内部处理函数
+    def process_item(item):
+        url = item['url']
+        ticker = item['ticker']
+        
+        # 1. 抓取
+        raw_text = _fetch_text(url)
+        if not raw_text or raw_text.startswith("Error"):
+            return {
+                "id": item['id'],
+                "ticker": ticker,
+                "summary": f"Failed to fetch content: {raw_text}"
+            }
+
+        # 2. 总结 (使用 Groq 17B)
+        system_prompt = (
+            "You are a high-efficiency financial news extractor. "
+            "Compress the article content into strict format:\n"
+            "### 1. EXECUTIVE SUMMARY\n"
+            "### 2. HARD DATA (Numbers/Dates)\n"
+            "### 3. KEY QUOTES\n"
+            "Constraints: Under 400 words. Be telegraphic."
+        )
+        user_prompt = f"User INSTRUCTION: {focus_instruction}\n\nCONTENT:\n{raw_text[:12000]}"
+
+        try:
+            chat_completion = groq_client.chat.completions.create(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                model="meta-llama/llama-4-scout-17b-16e-instruct",
+                temperature=0.1,
+            )
+            summary = chat_completion.choices[0].message.content
+            return {
+                "id": item['id'],
+                "ticker": ticker,
+                "title": item['title'],
+                "summary": summary
+            }
+        except Exception as e:
+            return {"id": item['id'], "ticker": ticker, "summary": f"Error: {str(e)}"}
+
+    # 并发总结
+    new_summaries = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        futures = [executor.submit(process_item, item) for item in selected_items]
+        for future in concurrent.futures.as_completed(futures):
+            new_summaries.append(future.result())
+            
+    # 存入 Session (追加模式)
+    SESSION_STATE["summaries"].extend(new_summaries)
+    
+    # 返回 JSON 给 Agent，方便它决定下一步
+    return json.dumps(new_summaries, ensure_ascii=False)
+
+# ==========================================
+# 🛒 Tool 4: 删除新闻 (Remove News)
+# ==========================================
+@mcp.tool()
+def remove_news_summaries(indices: list[int]) -> str:
+    """
+    Remove news summaries by their indices and return remaining indices.
+    
+    Args:
+        indices: A list of integer indices to remove from stored news summaries.
+                These indices correspond to the 'id' field in the summaries.
+    
+    Returns:
+        A JSON string containing the list of remaining summary indices after removal.
+    """
+    if not indices:
+        return json.dumps([item['id'] for item in SESSION_STATE["summaries"]], ensure_ascii=False)
+    
+    # 删除指定 indices 的新闻
+    indices_to_remove = set(indices)
+    SESSION_STATE["summaries"] = [
+        item for item in SESSION_STATE["summaries"] 
+        if item['id'] not in indices_to_remove
+    ]
+    
+    # 返回剩余 indices
+    remaining_indices = [item['id'] for item in SESSION_STATE["summaries"]]
+    return json.dumps(remaining_indices, ensure_ascii=False)
+
+# ==========================================
+# 🛒 Tool 5: 导出报告 (Export)
+# ==========================================
+@mcp.tool()
+def export_final_report() -> str:
+    """
+    Generate a final Markdown-formatted market report.
+    
+    Args:
+        (No parameters)
+    """
+    md = "# Daily Market Pulse\n\n"
+    
+    # 1. 股价部分
+    md += "## Market Data\n"
+    for ticker, data in SESSION_STATE["prices"].items():
+        if data.get("status") == "Active":
+            # 1. 基础信息
+            md += f"- **{ticker}**: ${data['price']} ({data['change']}%)\n"
+            
+            # 2. 清洗并格式化分时数据 (Intraday Trend)
+            history = data.get("price_history")
+            
+            # 检查 history 是否是 Pandas Series (因为有时候可能存成 list)
+            if hasattr(history, 'index') and not history.empty:
+                # 列表推导式：只取 "时:分" 和 "价格"
+                trend_points = [
+                    f"{t.strftime('%H:%M')}:${p:.2f}" 
+                    for t, p in zip(history.index, history.values)
+                ]
+                # 用箭头连接，既紧凑又直观
+                trend_line = " → ".join(trend_points)
+                md += f"  - *Intraday*: {trend_line}\n"
+        else:
+            md += f"- **{ticker}**: {data.get('status')}\n"
+            
+    # 2. 新闻部分
+    md += "\n## Key Developments\n"
+    if not SESSION_STATE["summaries"]:
+        md += "(No news selected)\n"
+    
+    for item in SESSION_STATE["summaries"]:
+        md += f"\n### [{item['ticker']}] {item.get('title', 'News')}\n"
+        md += f"{item['summary']}\n"
+        md += f"*(Ref ID: {item['id']})*\n"
+        
+    return md
 
 if __name__ == "__main__":
     mcp.run()

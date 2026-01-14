@@ -29,7 +29,7 @@ def get_current_location():
         print(f"定位出错 ({e})，使用默认城市")
         return "Beijing"
 
-client = FastAgent("OmniBriefing Client")
+client = FastAgent("Weather Client")
 
 @client.agent(
     name = "OmniBriefing",

@@ -1,0 +1,2 @@
+{"level":"ERROR","timestamp":"2026-01-11T19:17:36.799313","namespace":"mcp_agent.mcp.mcp_agent_client_session","message":"send_request failed: Connection closed"}
+{"level":"ERROR","timestamp":"2026-01-11T19:17:36.808813","namespace":"mcp_agent.mcp.mcp_connection_manager","message":"finance: Lifecycle task encountered an error: unhandled errors in a TaskGroup (1 sub-exception)","data":{"exc_info":true,"data":{"progress_action":"Error","server_name":"finance"}}}
