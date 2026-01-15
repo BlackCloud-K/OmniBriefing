@@ -119,7 +119,7 @@ async def analyze_report(md_file_path: str) -> str:
     
     # 构建分析提示
     analysis_prompt = f"""
-你是一位拥有 20 年经验的华尔街**首席交易员 (Chief Trader)**。你面对的不是普通散户，而是机构投资者。
+你是一位拥有 20 年经验的华尔街**首席交易员 (Chief Trader)**. 你的陈述需要专业但是易于任何投资背景的人理解。
 你的任务是基于提供的《市场原始数据》和《新闻简报》，撰写一份**深度复盘报告**。
 
 ### 核心思维模型：透过现象看本质 (Connect the Dots)
