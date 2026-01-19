@@ -6,3 +6,15 @@ mcp:
     finance:
       command: "python"
       args: ["server/finance_server.py"]
+    brave:
+      command: "npx"
+      args: ["-y", "@brave/brave-search-mcp-server"]
+    trends:
+      command: "npx"
+      args: ["-y", "mcp-trends-hub"]
+      env: {
+        "TRENDS_HUB_HIDDEN_FIELDS": "cover"
+      }
+    jina:
+      command: "npx"
+      args: ["-y", "mcp-remote", "https://mcp.jina.ai/v1"]
