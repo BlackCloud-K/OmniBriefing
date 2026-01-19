@@ -152,14 +152,14 @@ def fetch_and_store_prices(tickers: list[str], prepost: bool = True) -> str:
 # 🛒 Tool 2: 查新闻菜单 (Search & Menu)
 # ==========================================
 @mcp.tool()
-def search_news_options(tickers: list[str], limit: int = 3) -> str:
+def search_news_options(tickers: list[str], limit: int = 4) -> str:
     """
     Search and retrieve news article options for given stock tickers.
     
     Args:
         tickers: A list of stock ticker symbols (e.g., ["AAPL", "NVDA", "TSLA"]).
                 News will be searched for each ticker symbol provided.
-        limit: Optional integer (No more than 3). Maximum number of news articles to retrieve per ticker.
+        limit: Optional integer (No more than 4). Maximum number of news articles to retrieve per ticker.
                Higher values return more articles but may take longer to process.
     """
     if not tickers:
